@@ -1,8 +1,14 @@
 package com.gildedrose;
 
-public class TexttestFixture {
+class TextTestFixture {
     public static void main(String[] args) {
-        System.out.println("OMGHAI!");
+        String output = getReceiptString();
+        System.out.println(output);
+    }
+
+    public static String getReceiptString() {
+        StringBuilder output = new StringBuilder();
+        output.append("OMGHAI!").append('\n');
 
         Item[] items = new Item[] {
                 new Item("+5 Dexterity Vest", 10, 20), //
@@ -20,19 +26,17 @@ public class TexttestFixture {
         GildedRose app = new GildedRose(items);
 
         int days = 3;
-        if (args.length > 0) {
-            days = Integer.parseInt(args[0]) + 1;
-        }
 
         for (int i = 0; i < days; i++) {
-            System.out.println("-------- day " + i + " --------");
-            System.out.println("name, sellIn, quality");
+            output.append("-------- day " + i + " --------").append('\n');
+            output.append("name, sellIn, quality").append('\n');
             for (Item item : items) {
-                System.out.println(item);
+                output.append(item.toString()).append('\n');
             }
-            System.out.println();
+            output.append('\n');
             app.update_quality();
         }
+        return output.toString();
     }
 
 }
