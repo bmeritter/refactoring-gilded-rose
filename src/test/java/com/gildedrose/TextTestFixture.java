@@ -34,7 +34,7 @@ class TextTestFixture {
                 output.append(item.toString()).append('\n');
             }
             output.append('\n');
-            app.update_quality();
+            app.updateQuality();
         }
         return output.toString();
     }
