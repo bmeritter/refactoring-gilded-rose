@@ -31,9 +31,36 @@ public class Item {
         return name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
-    public void updateQuality() {
-        if (!isAged()
-                && !isBackstage()) {
+    public void updateQualityAndSellIn() {
+        updateQuality();
+
+        updateSellIn();
+
+        if (sellIn < 0) {
+            updateQualityWhenSellInisZero();
+        }
+    }
+
+    private void updateQualityWhenSellInisZero() {
+        if (!isAged()) {
+            if (!isBackstage()) {
+                if (quality > 0) {
+                    if (!isSulfuras()) {
+                        quality = quality - 1;
+                    }
+                }
+            } else {
+                quality = 0;
+            }
+        } else {
+            if (quality < 50) {
+                quality = quality + 1;
+            }
+        }
+    }
+
+    private void updateQuality() {
+        if (!isAged() && !isBackstage()) {
             if (quality > 0) {
                 if (!isSulfuras()) {
                     quality = quality - 1;
@@ -58,27 +85,11 @@ public class Item {
                 }
             }
         }
+    }
 
+    private void updateSellIn() {
         if (!isSulfuras()) {
             sellIn = sellIn - 1;
-        }
-
-        if (sellIn < 0) {
-            if (!isAged()) {
-                if (!isBackstage()) {
-                    if (quality > 0) {
-                        if (!isSulfuras()) {
-                            quality = quality - 1;
-                        }
-                    }
-                } else {
-                    quality = 0;
-                }
-            } else {
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
-            }
         }
     }
 }
