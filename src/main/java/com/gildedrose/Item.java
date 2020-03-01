@@ -37,11 +37,11 @@ public class Item {
         updateSellIn();
 
         if (sellIn < 0) {
-            updateQualityWhenSellInisZero();
+            updateQualityWhenSellInIsZero();
         }
     }
 
-    private void updateQualityWhenSellInisZero() {
+    private void updateQualityWhenSellInIsZero() {
         if (!isAged()) {
             if (!isBackstage()) {
                 if (quality > 0) {
