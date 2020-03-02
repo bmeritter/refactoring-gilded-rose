@@ -37,25 +37,26 @@ public class Item {
         updateSellIn();
 
         if (sellIn < 0) {
-            updateQualityWhenSellInIsZero();
+            updateQualityWhenSellInLessZero();
         }
     }
 
-    private void updateQualityWhenSellInIsZero() {
-        if (!isAged()) {
-            if (!isBackstage()) {
-                if (quality > 0) {
-                    if (!isSulfuras()) {
-                        quality = quality - 1;
-                    }
-                }
-            } else {
-                quality = 0;
-            }
-        } else {
+    private void updateQualityWhenSellInLessZero() {
+        if (isAged()) {
             if (quality < 50) {
                 quality = quality + 1;
             }
+            return;
+        }
+        if (isBackstage()) {
+            quality = 0;
+            return;
+        }
+        if (quality <= 0) {
+            return;
+        }
+        if (!isSulfuras()) {
+            quality = quality - 1;
         }
     }
 
@@ -66,24 +67,28 @@ public class Item {
                     quality = quality - 1;
                 }
             }
-        } else {
-            if (quality < 50) {
-                quality = quality + 1;
+            return;
+        }
+        if (quality >= 50) {
+            return;
+        }
+        quality = quality + 1;
 
-                if (isBackstage()) {
-                    if (sellIn < 11) {
-                        if (quality < 50) {
-                            quality = quality + 1;
-                        }
-                    }
+        if (!isBackstage()) {
+            return;
+        }
+        if (sellIn >= 11) {
+            return;
+        }
+        if (quality < 50) {
+            quality = quality + 1;
+        }
 
-                    if (sellIn < 6) {
-                        if (quality < 50) {
-                            quality = quality + 1;
-                        }
-                    }
-                }
-            }
+        if (sellIn >= 6) {
+            return;
+        }
+        if (quality < 50) {
+            quality = quality + 1;
         }
     }
 
