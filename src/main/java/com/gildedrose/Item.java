@@ -19,8 +19,8 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
-    private boolean isAged() {
-        return name.equals("Aged Brie");
+    protected boolean isAged() {
+        return false;
     }
 
     private boolean isSulfuras() {
