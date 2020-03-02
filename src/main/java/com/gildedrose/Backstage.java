@@ -14,4 +14,23 @@ public class Backstage extends Item {
     protected void updateQualityWhenSellInLessZero() {
         quality = 0;
     }
+
+    @Override
+    protected void updateQuality() {
+        if (quality < 50) {
+            quality = quality + 1;
+
+            if (sellIn < 11) {
+                if (quality < 50) {
+                    quality = quality + 1;
+                }
+            }
+
+            if (sellIn < 6) {
+                if (quality < 50) {
+                    quality = quality + 1;
+                }
+            }
+        }
+    }
 }

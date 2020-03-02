@@ -48,36 +48,11 @@ public class Item {
         quality = quality - 1;
     }
 
-    private void updateQuality() {
-        if (!isAged() && !isBackstage()) {
-            if (quality > 0) {
-                if (!isSulfuras()) {
-                    quality = quality - 1;
-                }
-            }
+    protected void updateQuality() {
+        if (quality <= 0) {
             return;
         }
-        if (quality >= 50) {
-            return;
-        }
-        quality = quality + 1;
-
-        if (!isBackstage()) {
-            return;
-        }
-        if (sellIn >= 11) {
-            return;
-        }
-        if (quality < 50) {
-            quality = quality + 1;
-        }
-
-        if (sellIn >= 6) {
-            return;
-        }
-        if (quality < 50) {
-            quality = quality + 1;
-        }
+        quality = quality - 1;
     }
 
     protected void updateSellIn() {
