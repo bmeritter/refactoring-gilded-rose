@@ -23,8 +23,8 @@ public class Item {
         return false;
     }
 
-    private boolean isSulfuras() {
-        return name.equals("Sulfuras, Hand of Ragnaros");
+    protected boolean isSulfuras() {
+        return false;
     }
 
     private boolean isBackstage() {
