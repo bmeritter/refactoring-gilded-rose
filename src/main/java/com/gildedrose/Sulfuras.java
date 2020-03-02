@@ -9,4 +9,14 @@ public class Sulfuras extends Item {
     protected boolean isSulfuras() {
         return true;
     }
+
+    @Override
+    protected void updateQualityWhenSellInLessZero() {
+        return;
+    }
+
+    @Override
+    protected void updateSellIn() {
+        return;
+    }
 }

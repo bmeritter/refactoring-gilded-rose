@@ -9,4 +9,12 @@ public class Aged extends Item {
     protected boolean isAged() {
         return true;
     }
+
+    @Override
+    protected void updateQualityWhenSellInLessZero() {
+        if (quality >= 50) {
+            return;
+        }
+        quality = quality + 1;
+    }
 }

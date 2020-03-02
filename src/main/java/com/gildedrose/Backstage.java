@@ -9,4 +9,9 @@ public class Backstage extends Item {
     protected boolean isBackstage() {
         return true;
     }
+
+    @Override
+    protected void updateQualityWhenSellInLessZero() {
+        quality = 0;
+    }
 }
