@@ -27,8 +27,8 @@ public class Item {
         return false;
     }
 
-    private boolean isBackstage() {
-        return name.equals("Backstage passes to a TAFKAL80ETC concert");
+    protected boolean isBackstage() {
+        return false;
     }
 
     public void updateQualityAndSellIn() {
